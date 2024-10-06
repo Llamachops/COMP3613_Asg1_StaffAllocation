@@ -4,9 +4,13 @@ from flask.cli import with_appcontext, AppGroup
 
 from App.database import db, get_migrate
 from App.models import User, Course, Allocation
-from App.main import create_app
-from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize, create_course, get_all_courses_json, create_allocation, get_all_staff, get_single_user_json, get_user, get_course, create_allocation, get_all_allocates_json, get_user_by_username, get_allocates_by_staff, get_allocate, delete_allocate, update_course, update_user_name, update_user_role )
 
+from App.controllers import (create_user, get_all_users_json, get_all_users, initialize, create_course,
+                             get_all_courses_json, get_all_staff, get_single_user_json, get_user, get_course,
+                             create_allocation, get_all_allocates_json, get_user_by_username, delete_allocate,
+                             update_course, update_user_name, update_user_role)
+from App.database import get_migrate
+from App.main import create_app
 
 # This commands file allow you to create convenient CLI commands for testing controllers
 
@@ -17,7 +21,7 @@ migrate = get_migrate(app)
 @app.cli.command("init", help="Creates and initializes the database")
 def init():
     initialize()
-    print('database intialized')
+    print('database initialized')
 
 '''
 User Commands
@@ -25,7 +29,7 @@ User Commands
 
 # Commands can be organized using groups
 
-# create a group, it would be the first argument of the comand
+# create a group, it would be the first argument of the command
 # eg : flask user <command>
 user_cli = AppGroup('user', help='User object commands') 
 
